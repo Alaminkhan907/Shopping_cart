@@ -103,6 +103,32 @@
       document
         .getElementById("case-increase")
         .addEventListener("click", function () {
+          handleProuductChange(true);
+        });
+
+      document
+        .getElementById("case-decrease")
+        .addEventListener("click", function () {
+          handleProuductChange(false);
+        });
+      function handleProuductChange(isIncrease) {
+        const caseInput = document.getElementById("case-count");
+        const caseCount = parseInt(caseInput.value);
+        let newCaseCount = caseCount;
+        if (isIncrease == true) {
+          newCaseCount = caseCount + 1;
+        }
+        if (isIncrease == false && caseCount > 0) {
+          newCaseCount = caseCount - 1;
+        }
+        caseInput.value = newCaseCount;
+        const caseTotal = newCaseCount * 59;
+        document.getElementById("case-total").innerText = "$" + caseTotal;
+      }
+
+      /* document
+        .getElementById("case-increase")
+        .addEventListener("click", function () {
           const caseInput = document.getElementById("case-count");
           const caseCount = parseInt(caseInput.value);
           const newCaseCount = caseCount + 1;
@@ -120,7 +146,7 @@
           caseInput.value = newCaseCount;
           const caseTotal = newCaseCount * 59;
           document.getElementById("case-total").innerText = "$" + caseTotal;
-        });
+        });*/
     </script>
   </body>
 </html>
