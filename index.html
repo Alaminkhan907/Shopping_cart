@@ -30,15 +30,14 @@
                 <div class="col-md-5 center-item">
                   <div class="input-group number-spinner">
                     <button class="btn btn-default">
-                      <i id="minusButton" class="fas fa-minus"></i>
+                      <i class="fas fa-minus"></i>
                     </button>
                     <input
-                      id="currentInputBox"
                       type="text"
                       class="form-control text-center"
-                      value="0"
+                      value="1"
                     />
-                    <button id="plusButton" class="btn btn-default">
+                    <button class="btn btn-default">
                       <i class="fas fa-plus"></i>
                     </button>
                   </div>
@@ -60,15 +59,16 @@
                       <i class="fas fa-minus"></i>
                     </button>
                     <input
+                      id="case-count"
                       type="text"
                       class="form-control text-center"
                       value="1"
                     />
-                    <button class="btn btn-default">
+                    <button id="case-increase" class="btn btn-default">
                       <i class="fas fa-plus"></i>
                     </button>
                   </div>
-                  <h5>$59</h5>
+                  <h5 id="case-total">$59</h5>
                   <img src="images/remove.png" alt="" class="remove-item" />
                 </div>
               </div>
@@ -99,37 +99,17 @@
       </div>
     </section>
     <script>
-      /*let addButton = document.getElementById("plusButton");
-      let reduceButton = document.getElementById("minusButton");
-
-      for (let i = 0; addButton <= 10; i++) {
-        reduceButton.addEventListener("click", function() {
-          let currentInputBox = document.getElementById("inputValue").value;
-          currentInputBox.value = currentInputBox.value + 1;
-        }
-      }*/
-
-      /*var plusBtn = document.getElementById("plusButton");
-      plusBtn.addEventListener("click", function () {
-        console.log("plus button is detected");
-        var plusCount = document.getElementById("currentInputBox").value;
-        var finalCount = parseFloat(plusCount);
-        //var result = increment(plusCount);
-        //console.log(result);
-      });*/
-      const minusBtn = document.getElementById("minusButton");
-      minusBtn.addEventListener("click", function () {
-        console.log("minus button is detected");
-        const minusCount = document.getElementById("currentInputBox").value;
-        const finalCount = parseFloat(minusCount);
-        console.log(finalCount);
-
-        var i = 0;
-        function increment() {
-          i++;
-          document.getElementById("currentInputBox").innerHTML = i;
-        }
-      });
+      // increment part
+      document
+        .getElementById("case-increase")
+        .addEventListener("click", function () {
+          const caseInput = document.getElementById("case-count");
+          const caseCount = parseInt(caseInput.value);
+          const newCaseCount = caseCount + 1;
+          caseInput.value = newCaseCount;
+          const caseTotal = newCaseCount * 59;
+          document.getElementById("case-total").innerText = caseTotal;
+        });
     </script>
   </body>
 </html>
