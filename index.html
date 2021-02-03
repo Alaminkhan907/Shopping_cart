@@ -29,7 +29,10 @@
 
                 <div class="col-md-5 center-item">
                   <div class="input-group number-spinner">
-                    <button id="phone-decrease" class="btn btn-default">
+                    <button
+                      onclick="handleProductChange('phone',false)"
+                      class="btn btn-default"
+                    >
                       <i class="fas fa-minus"></i>
                     </button>
                     <input
@@ -38,11 +41,14 @@
                       class="form-control text-center"
                       value="1"
                     />
-                    <button id="phone-increase" class="btn btn-default">
+                    <button
+                      onclick="handleProductChange('phone',true)"
+                      class="btn btn-default"
+                    >
                       <i class="fas fa-plus"></i>
                     </button>
                   </div>
-                  <h5 id="total-price">$1219</h5>
+                  <h5 id="phone-total">$1219</h5>
                   <img src="images/remove.png" alt="" class="remove-item" />
                 </div>
               </div>
@@ -57,7 +63,7 @@
                 <div class="col-md-5 center-item">
                   <div class="input-group number-spinner">
                     <button
-                      onclick="handleProductChange(false)"
+                      onclick="handleProductChange('case',false)"
                       class="btn btn-default"
                     >
                       <i class="fas fa-minus"></i>
@@ -69,7 +75,7 @@
                       value="1"
                     />
                     <button
-                      onclick="handleProductChange(true)"
+                      onclick="handleProductChange('case',true)"
                       class="btn btn-default"
                     >
                       <i class="fas fa-plus"></i>
@@ -107,31 +113,29 @@
     </section>
     <script>
       // increment part
-      function handleProductChange(isIncrease) {
-        const caseInput = document.getElementById("case-count");
-        const caseCount = parseInt(caseInput.value); //DOM take value from "form"
-        let newCaseCount = caseCount;
+      function handleProductChange(product, isIncrease) {
+        const productInput = document.getElementById(product + "-count");
+        const productCount = parseInt(productInput.value); //DOM take value from "form"
+        let productNewCount = productCount;
         if (isIncrease == true) {
-          newCaseCount = caseCount + 1;
+          productNewCount = productCount + 1;
         }
-        if (isIncrease == false && caseCount > 0) {
-          newCaseCount = caseCount - 1;
+        if (isIncrease == false && productCount > 0) {
+          productNewCount = productCount - 1;
         }
-        caseInput.value = newCaseCount;
-        const caseTotal = newCaseCount * 59;
-        document.getElementById("case-total").innerText = "$" + caseTotal;
+        productInput.value = productNewCount;
+        //const productTotal = productNewCount * 59;
+        let productTotal = 0;
+        if (product == "phone") {
+          productTotal = productNewCount * 1219;
+        }
+        if (product == "case") {
+          productTotal = productNewCount * 59;
+        }
+
+        document.getElementById(product + "-total").innerText =
+          "$" + productTotal;
       }
-      document
-        .getElementById("phone-increase")
-        .addEventListener("click", function () {
-          const phoneCount = document.getElementById("phone-count");
-          const phoneValue = parseInt(phoneCount.value);
-          const newPhoneValue = phoneValue + 1;
-          phoneCount.value = newPhoneValue;
-          const valueTotal = newPhoneValue * 1219;
-          document.getElementById("phone-count").innerText = valueTotal;
-          document.getElementById("total-price").innerText = "$" + valueTotal;
-        });
     </script>
   </body>
 </html>
