@@ -33,13 +33,13 @@
                       <i id="minusButton" class="fas fa-minus"></i>
                     </button>
                     <input
-                      id="inputValue"
+                      id="currentInputBox"
                       type="text"
                       class="form-control text-center"
-                      value="1"
+                      value="0"
                     />
-                    <button class="btn btn-default">
-                      <i id="plusButton" class="fas fa-plus"></i>
+                    <button id="plusButton" class="btn btn-default">
+                      <i class="fas fa-plus"></i>
                     </button>
                   </div>
                   <h5>$1219</h5>
@@ -65,7 +65,7 @@
                       value="1"
                     />
                     <button class="btn btn-default">
-                      <i id="plusButton" class="fas fa-plus"></i>
+                      <i class="fas fa-plus"></i>
                     </button>
                   </div>
                   <h5>$59</h5>
@@ -99,24 +99,36 @@
       </div>
     </section>
     <script>
-      const plusBtn = document.getElementById("plusButton");
+      /*let addButton = document.getElementById("plusButton");
+      let reduceButton = document.getElementById("minusButton");
+
+      for (let i = 0; addButton <= 10; i++) {
+        reduceButton.addEventListener("click", function() {
+          let currentInputBox = document.getElementById("inputValue").value;
+          currentInputBox.value = currentInputBox.value + 1;
+        }
+      }*/
+
+      /*var plusBtn = document.getElementById("plusButton");
       plusBtn.addEventListener("click", function () {
         console.log("plus button is detected");
-        const plusCount = document.getElementById("inputValue").value;
-        const finalCount = parseFloat(plusCount);
-        for (let i = 1; i < plusCount.length; i++) {
-          const loopCount = plusCount[i];
-          console.log(loopCount);
-          document.getElementById("inputValue").innerText = loopCount;
-        }
-        console.log(finalCount);
-      });
+        var plusCount = document.getElementById("currentInputBox").value;
+        var finalCount = parseFloat(plusCount);
+        //var result = increment(plusCount);
+        //console.log(result);
+      });*/
       const minusBtn = document.getElementById("minusButton");
       minusBtn.addEventListener("click", function () {
         console.log("minus button is detected");
-        const plusCount = document.getElementById("inputValue").value;
-        const finalCount = parseFloat(plusCount);
+        const minusCount = document.getElementById("currentInputBox").value;
+        const finalCount = parseFloat(minusCount);
         console.log(finalCount);
+
+        var i = 0;
+        function increment() {
+          i++;
+          document.getElementById("currentInputBox").innerHTML = i;
+        }
       });
     </script>
   </body>
